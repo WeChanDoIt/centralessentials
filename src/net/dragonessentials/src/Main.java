@@ -17,7 +17,6 @@ import net.dragonessentials.src.commands.Dab;
 import net.dragonessentials.src.commands.Discord;
 import net.dragonessentials.src.commands.Dub;
 import net.dragonessentials.src.commands.Help;
-import net.dragonessentials.src.commands.Ism;
 import net.dragonessentials.src.commands.L;
 import net.dragonessentials.src.commands.Shrug;
 import net.dragonessentials.src.commands.Smak;
@@ -106,7 +105,6 @@ public class Main extends JavaPlugin implements Listener {
 		new nv(this);
 		new Help(this);
 		new Discord(this);
-		new Ism(this);
 
 		// emotes
 		plugin.getCommand("annoyed").setExecutor(new Annoyed(this));
