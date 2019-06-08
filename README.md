@@ -21,6 +21,7 @@ Includes:
   - nether candy (1x Blaze Powder and 1x Nether Stalk)
   with different permissions to craft each one
 - MCMMO booster (Requires the McMMO plugin)
+
 Todo:
 - Rainbow Orbs
 - Chunk Hoppers?
