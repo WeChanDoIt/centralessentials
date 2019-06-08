@@ -1,0 +1,39 @@
+name: DragonEssentials
+author: ChannnyBoy
+version: 1.0-release
+main: net.dragonessentials.src.Main
+depend: [SuperBoosters]
+commands:
+  nv:
+    usage: /nv
+  help:
+    usage: /help
+  discord:
+    usage: /discord
+  annoyed:
+    usage: /annoyed
+    description:
+  dab:
+    usage: /dab
+    description:
+  dub:
+    usage: /dub
+    description:
+  L:
+    usage: /L
+    description:
+  shrug:
+    usage: /shrug
+    description:
+  smak:
+    usage: /smak
+    description:
+  triggered:
+    usage: /triggered
+    description:
+  yeet:
+    usage: /yeet
+    description:
+  ism:
+    usage: /ism
+    description:
