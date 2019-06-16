@@ -7,9 +7,6 @@ This plugin requires:
 to build.
 
 Includes:
-- /help
-- /discord
-- Emotes such as /annoyed, /dab, /dub, /L, /shrug, /smak, /triggered, and /yeet.
 - "bonemeal" netherwart with BLAZE POWDER to make it grow
 - crouch on crops with bonemeal in your hand to "bonemeal" the crop
 - crouch on soil with the crop in your hand to plant the crop on the block you are standing on
@@ -23,6 +20,10 @@ Includes:
 - MCMMO booster (Requires the McMMO plugin)
 
 Todo:
+- Rewrite plugin!!!!!!!!
+- Redo Emote commands (- Emotes such as /annoyed, /dab, /dub, /L, /shrug, /smak, /triggered, and /yeet.)
+- Redo /help and /discord
+- Add /showitem <player>
 - Rainbow Orbs
 - Chunk Hoppers?
 - Anti-Gravity Dust
