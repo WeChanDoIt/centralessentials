@@ -1,6 +1,5 @@
 package net.dragonessentials.src.events;
 
-import java.io.File;
 import java.util.List;
 
 import org.bukkit.Effect;
@@ -26,7 +25,6 @@ import net.dragonessentials.src.utils.MiscUtils;
 public class PlantEvents implements Listener {
 	
 	private Main plugin;
-	public static File main = Main.getPlugin().getDataFolder();
 	List<Material> plantBlockTable = MiscUtils.plantBlockTable();
 	List<Material> plantCropTable = MiscUtils.plantCropTable();
 
@@ -57,7 +55,7 @@ public class PlantEvents implements Listener {
 			} else {
 				player.playEffect(block.getLocation(), Effect.FLAME, 10);
 				if (player.getGameMode() != GameMode.CREATIVE) {
-					ItemUtils.setAmount(item, 1, player);
+					ItemUtils.removeItemAmount(item.getType(), 1, player);
 				}
 			}
 			block.setData(newData);
@@ -90,7 +88,7 @@ public class PlantEvents implements Listener {
 					if (item.getType() == plant && !item.hasItemMeta()) {
 						crop.setType(plantBlockTable.get(plantCropTable.indexOf(plant)));
 						if (player.getGameMode() != GameMode.CREATIVE) {
-							ItemUtils.setAmount(item, 1, player);
+							ItemUtils.removeItemAmount(item.getType(), 1, player);
 						}
 					}
 				}
@@ -105,7 +103,7 @@ public class PlantEvents implements Listener {
 						} else {
 							player.playEffect(crop.getLocation().add(0.5, 0.5, 0.5), Effect.HAPPY_VILLAGER, 10);
 							if (player.getGameMode() != GameMode.CREATIVE) {
-								ItemUtils.setAmount(item, 1, player);
+								ItemUtils.removeItemAmount(item.getType(), 1, player);
 							}
 						}
 						crop.setData(newData);
@@ -117,7 +115,7 @@ public class PlantEvents implements Listener {
 						&& !item.hasItemMeta()) {
 					netherwart.setType(Material.NETHER_WARTS);
 					if (player.getGameMode() != GameMode.CREATIVE) {
-						ItemUtils.setAmount(item, 1, player);
+						ItemUtils.removeItemAmount(item.getType(), 1, player);
 					}
 				} else if (netherwart.getType().equals(Material.NETHER_WARTS)
 						&& item.getType().equals(Material.BLAZE_POWDER) && !item.hasItemMeta()) {
@@ -128,7 +126,7 @@ public class PlantEvents implements Listener {
 					} else {
 						player.playEffect(netherwart.getLocation().add(0.5, 0.5, 0.5), Effect.FLAME, 10);
 						if (player.getGameMode() != GameMode.CREATIVE) {
-							ItemUtils.setAmount(item, 1, player);
+							ItemUtils.removeItemAmount(item.getType(), 1, player);
 						}
 					}
 					netherwart.setData(newData);

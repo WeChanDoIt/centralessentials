@@ -7,6 +7,8 @@ This plugin requires:
 to build.
 
 Includes:
+- Emotes such as /annoyed, /dab, /dub, /L, /shrug, /smak, /triggered, and /yeet.
+- No weather
 - "bonemeal" netherwart with BLAZE POWDER to make it grow
 - crouch on crops with bonemeal in your hand to "bonemeal" the crop
 - crouch on soil with the crop in your hand to plant the crop on the block you are standing on
@@ -17,11 +19,11 @@ Includes:
   - golden melon (1x Gold Block and 1x Melon)
   - nether candy (1x Blaze Powder and 1x Nether Stalk)
   with different permissions to craft each one
+- disabled hopper crafting
 - MCMMO booster (Requires the McMMO plugin)
 
 Todo:
 - Rewrite plugin!!!!!!!!
-- Redo Emote commands (- Emotes such as /annoyed, /dab, /dub, /L, /shrug, /smak, /triggered, and /yeet.)
 - Redo /help and /discord
 - Add /showitem <player>
 - Rainbow Orbs

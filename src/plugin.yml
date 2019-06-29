@@ -1,15 +1,30 @@
-name: DragonEssentials
-author: ChannnyBoy
-version: 1.0-release
+name: CentralEssentials
+author: WeChanDoIt
+version: 1.1
 main: net.dragonessentials.src.Main
 depend: [SuperBoosters]
 commands:
   nv:
     usage: /nv
+    description:
   help:
     usage: /help
+    description:
   discord:
     usage: /discord
+    description:
+  centralitems:
+    usage: /centralitems
+    description:
+  fix:
+    usage: /fix
+    description:
+  smeltpick:
+    usage: /smeltpick
+    description:
+  glassbreak:
+    usage: /glassbreak
+    description:
   annoyed:
     usage: /annoyed
     description:

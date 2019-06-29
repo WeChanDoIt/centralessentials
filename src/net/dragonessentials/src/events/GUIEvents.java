@@ -1,80 +1,62 @@
 package net.dragonessentials.src.events;
 
 import java.io.File;
-import java.util.List;
-import java.util.UUID;
 
-import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
-import org.bukkit.configuration.file.FileConfiguration;
-import org.bukkit.configuration.file.YamlConfiguration;
+import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
-import org.bukkit.event.player.PlayerJoinEvent;
 
-import com.wasteofplastic.askyblock.ASkyBlockAPI;
-
-import net.dragonessentials.src.Main;
-import net.dragonessentials.src.gui.GUIManager;
+import net.dragonessentials.src.CentralAPI;
+import net.dragonessentials.src.gui.SmeltPickGUI;
 import net.dragonessentials.src.utils.ChatUtils;
-import net.dragonessentials.src.utils.ConfigUtils;
+import net.dragonessentials.src.utils.ItemUtils;
+import net.dragonessentials.src.utils.MiscUtils;
 
 public class GUIEvents implements Listener {
 
-	private Main plugin;
-	public static File main = Main.getPlugin().getDataFolder();
+	public static File playerFile;
 
 	@EventHandler
 	public void onInventoryClick(InventoryClickEvent event) {
 		try {
-			Player player = (Player) event.getWhoClicked();
-			UUID playerUUID = player.getUniqueId();
-			UUID owner;
-			List<UUID> members = ASkyBlockAPI.getInstance().getTeamMembers(playerUUID);
-			ConfigUtils.playerSettings(player.getUniqueId());
-			File UUID = new File(main, "playersettings.yml");
-			FileConfiguration config = YamlConfiguration.loadConfiguration(UUID);
+			if (event.getClickedInventory() != null && event.getClickedInventory().getTitle()
+					.equals(ChatColor.translateAlternateColorCodes('&', "&8&lADD SMELTING RESOURCES"))) {
+				event.setCancelled(true);
+				if (event.getCurrentItem().hasItemMeta()) {
+					if (event.getCurrentItem().getItemMeta().hasLore()) {
+						if (!event.getCurrentItem().getItemMeta().getLore()
+								.contains(ChatUtils.chat("&7You don't have any of these!"))) {
+							Material id = event.getCurrentItem().getType();
+							Player player = (Player) event.getWhoClicked();
+							if (event.isRightClick()) {
+								// add points
+								event.getWhoClicked()
+										.sendMessage(ChatUtils.chat("&6&l[!] &eAdded &b"
+												+ (MiscUtils.fuelTable().get(id) * ItemUtils.getAmount(player, id))
+												+ " &epoints!"));
+								if (!(ItemUtils.getAmount(player, id) == 0))
+									CentralAPI.getInstance().addSmeltingPoints(player,
+											MiscUtils.fuelTable().get(id) * ItemUtils.getAmount(player, id));
+								ItemUtils.removeItemAmount(id, ItemUtils.getAmount(player, id), player);
 
-			if (ASkyBlockAPI.getInstance().hasIsland(playerUUID)) {
-				owner = playerUUID;
-			} else {
-				owner = ASkyBlockAPI.getInstance().getTeamLeader(playerUUID);
-			}
-			members.add(owner);
-			for (UUID member : members) {
-				String memberName = Bukkit.getOfflinePlayer(member).getName();
-				if (event.getClickedInventory() != null
-						&& event.getClickedInventory().getTitle()
-								.equals(ChatColor.translateAlternateColorCodes('&', "&2&l[!] &2Island Management"))
-						|| event.getClickedInventory().getTitle()
-								.equals(ChatColor.translateAlternateColorCodes('&', "&2&l[!] &2Island Members"))
-						|| event.getClickedInventory().getTitle().equals(
-								ChatColor.translateAlternateColorCodes('&', "&2&l[!] &2Managing " + memberName))) {
-					event.setCancelled(true);
-					if (event.getCurrentItem().hasItemMeta()) {
-						if (event.getCurrentItem().getItemMeta().getDisplayName()
-								.equals(ChatUtils.chat("&2&l[!] &2Manage &aMember &2Permissions"))) {
-							GUIManager.openIslandMemberList(player, 1);
-						}
-						if (event.getCurrentItem().getItemMeta().getDisplayName()
-								.equals(ChatUtils.chat("&2&l[!] &2Manage &a" + memberName))) {
-							GUIManager.openPlayerIslandSettings(player, member);
+							} else if (event.isLeftClick()) {
+								// add points
+								event.getWhoClicked().sendMessage(ChatUtils
+										.chat("&6&l[!] &eAdded &b" + MiscUtils.fuelTable().get(id) + " &epoints!"));
+								CentralAPI.getInstance().addSmeltingPoints(player, MiscUtils.fuelTable().get(id));
+								ItemUtils.removeItemAmount(id, 1, player);
+							}
+							player.updateInventory();
+							SmeltPickGUI.getInstance().open(player);
 						}
 					}
 				}
-
 			}
 		} catch (Exception e) {
-
+			e.printStackTrace();
 		}
-	}
-
-	@EventHandler
-	public void onPlayerJoin(PlayerJoinEvent event) {
-		Player player = event.getPlayer();
-		ConfigUtils.playerSettings(player.getUniqueId());
-
 	}
 }
