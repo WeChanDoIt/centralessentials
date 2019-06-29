@@ -1,4 +1,4 @@
-DragonMC
+CentralEssentials
 
 This plugin requires:
 - Spigot 1.8.8
@@ -7,24 +7,18 @@ This plugin requires:
 to build.
 
 Includes:
+- emotes with cooldowns so they aren't spammy
 - "bonemeal" netherwart with BLAZE POWDER to make it grow
 - crouch on crops with bonemeal in your hand to "bonemeal" the crop
 - crouch on soil with the crop in your hand to plant the crop on the block you are standing on
-- custom recipes such as:
-  - sugar cookies (1x Wheat and 1x Sugar)
-  - potato stew (1x Potato and 1x Milk Bucket)
-  - golden carrot (1x Gold Ingot and 1x Carrot)
-  - golden melon (1x Gold Block and 1x Melon)
-  - nether candy (1x Blaze Powder and 1x Nether Stalk)
+- /fix and /fix all with cooldowns so they aren't spammy
+- Rainbow orbs, rename scrolls, and smelting pickaxes
+- /smeltpick (fuel for smelting pickaxes)
   with different permissions to craft each one
 - MCMMO booster (Requires the McMMO plugin)
 
 Todo:
-- Rewrite plugin!!!!!!!!
-- Redo Emote commands (- Emotes such as /annoyed, /dab, /dub, /L, /shrug, /smak, /triggered, and /yeet.)
-- Redo /help and /discord
 - Add /showitem <player>
-- Rainbow Orbs
 - Chunk Hoppers?
 - Anti-Gravity Dust
 - Super Boosted Beacons?
