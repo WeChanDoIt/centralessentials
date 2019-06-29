@@ -30,14 +30,14 @@ public class ChatEvents implements Listener {
 		if (e.getMessage().equals("cancel")) {
 			player.sendMessage(ChatUtils.chat("&c&l[!] &cYour item has been returned to you."));
 			Main.getPlugin().renamecheck.remove(player.getUniqueId());
-			player.getInventory().addItem(ItemUtils.getRenameScroll());
-			return;
-		}
-		String colorMessage = ChatUtils.chat(e.getMessage());
-		if (player.getItemInHand() == null) {
-			player.sendMessage(ChatUtils.chat("&c&l[!] &cYou cannot rename that item!"));
-			Main.getPlugin().renamecheck.remove(player.getUniqueId());
-			player.getInventory().addItem(ItemUtils.getRenameScroll());
+			if (player.getInventory().firstEmpty() == -1)
+				player.getLocation().getWorld().dropItemNaturally(player.getLocation(), item);
+			else
+				player.getInventory().addItem(item);
+			if (player.getInventory().firstEmpty() == -1)
+				player.getLocation().getWorld().dropItemNaturally(player.getLocation(), ItemUtils.getRenameScroll());
+			else
+				player.getInventory().addItem(ItemUtils.getRenameScroll());
 			return;
 		}
 		message = ChatUtils.chat(message);
