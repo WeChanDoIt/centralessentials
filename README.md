@@ -1,4 +1,4 @@
-CentralEssentials
+# CentralEssentials
 
 This plugin requires:
 - Spigot 1.8.8
@@ -20,10 +20,4 @@ Includes:
 - disabled hopper crafting
 - MCMMO booster (Requires the McMMO plugin)
 
-Todo:
-- Rewrite plugin!!!!!!!!
-- Redo /help and /discord
-- Add /showitem <player>
-- Chunk Hoppers?
-- Anti-Gravity Dust
-- Super Boosted Beacons?
+_This plugin was originally in use for CentralMC. As the server no longer exists, this plugin has been open-sourced for showcasing purposes._
